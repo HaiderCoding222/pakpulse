@@ -1,9 +1,9 @@
-// src/utils/newsApi.js
+// src/api/newsApi.js
+
 const GNEWS_API_KEY = "9fb07036367bccea2228c0ca05293799";
 
-export const fetchNews = async () => {
+export const fetchTopHeadlines = async () => {   // ← sirf ye line change ki
   try {
-    // Pehle Pakistan ki top headlines
     let response = await fetch(
       `https://gnews.io/api/v4/top-headlines?country=pk&lang=en&max=20&token=${GNEWS_API_KEY}`
     );
@@ -16,7 +16,6 @@ export const fetchNews = async () => {
       }
     }
 
-    // Fallback: World news (agar Pakistan mein kuch issue ho)
     console.log("Falling back to world news...");
     response = await fetch(
       `https://gnews.io/api/v4/top-headlines?lang=en&max=20&token=${GNEWS_API_KEY}`
