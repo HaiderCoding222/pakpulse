@@ -1,5 +1,8 @@
 import React from "react";
 
+// Ek zabardast Pakistani fallback image (Pakistan flag + PakPulse text)
+const PAKPULSE_FALLBACK = "https://via.placeholder.com/600x400/006400/ffffff.png?text=🇵🇰+PakPulse+News";
+
 function NewsCard({ article }) {
   if (!article) return null;
 
@@ -8,9 +11,7 @@ function NewsCard({ article }) {
   const url = article.url || "#";
   const urlToImage = article.urlToImage;
   const publishedAt = article.publishedAt || new Date().toISOString();
-  const sourceName = article.source?.name || "News Source";
-
-  const defaultImage = "https://placehold.co/600x400/1a1a1a/ffffff/png?text=No+Image";
+  const sourceName = article.source?.name || "PakPulse News";
 
   const isDarkMode = document.documentElement.classList.contains('dark-mode');
 
@@ -18,14 +19,20 @@ function NewsCard({ article }) {
     <div className="col-md-6 col-lg-4 mb-4">
       <div className={`card h-100 shadow-sm ${isDarkMode ? 'dark-card' : ''}`}>
         <img
-          src={urlToImage || defaultImage}
+          src={urlToImage || PAKPULSE_FALLBACK}
           className="card-img-top"
           alt={title}
           loading="lazy"
           onError={(e) => {
-            e.target.src = defaultImage;
+            e.target.src = PAKPULSE_FALLBACK;
+            e.target.style.objectFit = "contain";
+            e.target.style.backgroundColor = "#006400";
           }}
-          style={{ height: "200px", objectFit: "cover" }}
+          style={{ 
+            height: "200px", 
+            objectFit: urlToImage ? "cover" : "contain",
+            backgroundColor: urlToImage ? "transparent" : "#006400"
+          }}
         />
         <div className="card-body d-flex flex-column">
           <div className="d-flex justify-content-between align-items-center mb-2">
