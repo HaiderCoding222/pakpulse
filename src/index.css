@@ -1,13 +1,151 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* === DARK MODE VARIABLES === */
+:root {
+  --bg-light: #f8f9fa;
+  --text-light: #333;
+  --bg-dark: #121212;
+  --text-dark: #e0e0e0;
+  --card-bg-dark: #1e1e1e;
+  --navbar-bg-dark: #0d1b2a;
+  --border-dark: #333;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* === BASE STYLES === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+  min-height: 100vh;
+}
+
+/* === LIGHT MODE (DEFAULT) === */
+html {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body {
+  background-color: var(--bg-light) !important;
+  color: var(--text-light) !important;
+}
+
+.container, .container-fluid {
+  background-color: var(--bg-light) !important;
+}
+
+/* === DARK MODE STYLES === */
+html.dark-mode {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+html.dark-mode body {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+html.dark-mode .container,
+html.dark-mode .container-fluid {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Cards */
+html.dark-mode .card {
+  background-color: var(--card-bg-dark) !important;
+  border: 1px solid var(--border-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+html.dark-mode .card-body {
+  background-color: var(--card-bg-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+html.dark-mode .card-title,
+html.dark-mode .card-text {
+  color: var(--text-dark) !important;
+}
+
+/* Text Colors */
+html.dark-mode h1,
+html.dark-mode h2, 
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode h5,
+html.dark-mode h6,
+html.dark-mode p,
+html.dark-mode span {
+  color: var(--text-dark) !important;
+}
+
+html.dark-mode .text-muted {
+  color: #aaa !important;
+}
+
+/* Buttons */
+html.dark-mode .btn-outline-primary {
+  color: #60a5fa !important;
+  border-color: #60a5fa !important;
+}
+
+html.dark-mode .btn-outline-primary:hover {
+  background-color: #60a5fa !important;
+  color: #000 !important;
+}
+
+/* Navbar */
+html.dark-mode .navbar {
+  background-color: var(--navbar-bg-dark) !important;
+  border-bottom: 1px solid var(--border-dark) !important;
+}
+
+html.dark-mode .navbar-brand,
+html.dark-mode .nav-link {
+  color: #fff !important;
+}
+
+/* Badges */
+html.dark-mode .badge {
+  color: #fff !important;
+}
+
+/* === COMPONENT STYLES === */
+.card {
+  border-radius: 16px !important;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background-color: #f0f0f0;
+}
+
+html.dark-mode .card-img-top {
+  background-color: #333;
+}
+
+/* Loading Text */
+html.dark-mode .text-center p {
+  color: var(--text-dark) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-img-top { 
+    height: 180px; 
+  }
 }
